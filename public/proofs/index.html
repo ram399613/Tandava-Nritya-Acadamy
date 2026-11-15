@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tandava Nritya Academy - Project Submission Proofs (Sections 7-11)</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    body { background: #0f172a; color: #1e293b; padding: 2rem 1rem; }
+    .container { max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem; }
+    .proof-card { background: white; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); overflow: hidden; border: 1px solid #e2e8f0; }
+    .proof-header { background: #1e1b4b; color: white; padding: 1rem 1.5rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 3px solid #7c3aed; }
+    .proof-header h2 { font-size: 1.125rem; font-weight: 700; letter-spacing: 0.5px; }
+    .proof-body { padding: 2rem; }
+
+    /* Section 7 Letterhead */
+    .letterhead { border-bottom: 2px solid #7c3aed; padding-bottom: 1.5rem; margin-bottom: 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .lh-title { font-size: 1.5rem; font-weight: 800; color: #4c1d95; letter-spacing: 0.5px; }
+    .lh-sub { font-size: 0.8125rem; color: #6b7280; margin-top: 0.25rem; }
+    .doc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-bottom: 1.5rem; background: #f8fafc; padding: 1rem; border-radius: 8px; font-size: 0.875rem; }
+    .approval-text { font-size: 0.9375rem; line-height: 1.7; color: #334155; margin-bottom: 2rem; }
+    .features-list { margin: 1rem 0 1.5rem 1.5rem; font-size: 0.875rem; line-height: 1.8; color: #1e293b; }
+    .sign-section { display: flex; justify-content: space-between; align-items: flex-end; margin-top: 2.5rem; padding-top: 1rem; }
+    .stamp-box { width: 140px; height: 140px; border: 2px dashed #7c3aed; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: #7c3aed; font-weight: 700; font-size: 0.7rem; padding: 0.5rem; text-transform: uppercase; transform: rotate(-5deg); }
+    .signature-box { text-align: right; }
+    .sign-name { font-weight: 800; color: #1e1b4b; font-size: 1rem; }
+    .sign-title { font-size: 0.8125rem; color: #64748b; }
+
+    /* Section 8 Map & Location */
+    .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .loc-details table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .loc-details td { padding: 0.625rem 0.5rem; border-bottom: 1px solid #f1f5f9; }
+    .loc-label { font-weight: 700; color: #475569; width: 38%; }
+    .loc-val { color: #0f172a; }
+    .map-mock { background: #e2e8f0; border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; min-height: 250px; border: 2px solid #cbd5e1; }
+    .map-badge { background: #dc2626; color: white; padding: 0.5rem 1rem; border-radius: 9999px; font-weight: 700; font-size: 0.8125rem; display: flex; align-items: center; gap: 0.375rem; box-shadow: 0 4px 12px rgba(220,38,38,0.4); }
+
+    /* Section 9 PhonePe Transaction */
+    .txn-card { max-width: 440px; margin: 0 auto; background: #0f172a; color: white; border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+    .phonepe-brand { display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 1rem; margin-bottom: 1.25rem; }
+    .pp-logo { display: flex; align-items: center; gap: 0.5rem; font-weight: 800; font-size: 1.125rem; color: #a855f7; }
+    .pp-icon { width: 32px; height: 32px; border-radius: 50%; background: #5f259f; display: flex; align-items: center; justify-content: center; color: white; font-weight: 900; font-size: 16px; }
+    .success-badge { display: flex; flex-direction: column; align-items: center; margin: 1rem 0; text-align: center; }
+    .check-circle { width: 56px; height: 56px; border-radius: 50%; background: #16a34a; display: flex; align-items: center; justify-content: center; font-size: 28px; margin-bottom: 0.75rem; color: white; }
+    .txn-amount { font-size: 2.25rem; font-weight: 800; color: white; margin-bottom: 0.25rem; }
+    .paid-to { font-size: 0.875rem; color: #94a3b8; }
+    .paid-name { font-size: 1rem; font-weight: 700; color: #f8fafc; margin-top: 0.25rem; }
+    .txn-meta { background: #1e293b; border-radius: 8px; padding: 1rem; margin-top: 1.25rem; display: flex; flex-direction: column; gap: 0.625rem; font-size: 0.8125rem; }
+    .txn-row { display: flex; justify-content: space-between; }
+    .txn-k { color: #94a3b8; }
+    .txn-v { color: #f1f5f9; font-weight: 600; }
+
+    /* Section 10 Email */
+    .email-container { border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; }
+    .email-top { background: #f8fafc; padding: 1rem; border-bottom: 1px solid #e2e8f0; font-size: 0.875rem; display: flex; flex-direction: column; gap: 0.375rem; }
+    .email-row { display: flex; gap: 0.5rem; }
+    .email-k { font-weight: 700; color: #64748b; width: 70px; }
+    .email-v { color: #0f172a; }
+    .email-body { padding: 1.5rem; font-size: 0.9375rem; line-height: 1.7; color: #334155; }
+
+    /* Section 11 GST */
+    .gst-cert { border: 3px double #047857; padding: 1.5rem; border-radius: 8px; background: #ecfdf5; }
+    .gst-header { text-align: center; border-bottom: 2px solid #059669; padding-bottom: 1rem; margin-bottom: 1.25rem; }
+    .gst-header h3 { font-size: 1.125rem; color: #065f46; font-weight: 800; letter-spacing: 0.5px; }
+    .gst-header p { font-size: 0.75rem; color: #047857; margin-top: 0.25rem; }
+    .gst-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; margin-top: 1rem; background: white; border-radius: 6px; overflow: hidden; }
+    .gst-table td { padding: 0.625rem 0.75rem; border: 1px solid #a7f3d0; }
+    .gst-k { font-weight: 700; color: #065f46; width: 35%; background: #f0fdf4; }
+    .gst-v { color: #0f172a; font-family: monospace; font-size: 0.9375rem; }
+
+    .print-btn { display: inline-block; padding: 0.75rem 1.5rem; background: #7c3aed; color: white; text-decoration: none; border-radius: 8px; font-weight: 700; cursor: pointer; border: none; margin-bottom: 1.5rem; }
+    @media print {
+      body { background: white; padding: 0; }
+      .container { gap: 2rem; }
+      .proof-card { box-shadow: none; border: 1px solid #cbd5e1; page-break-after: always; }
+      .print-btn { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div style="display: flex; justify-content: space-between; align-items: center; color: white;">
+      <div>
+        <h1 style="font-size: 1.75rem; font-weight: 800;">Tandava Nritya Academy - Project Submission Proofs</h1>
+        <p style="color: #94a3b8; font-size: 0.875rem; margin-top: 0.25rem;">Software Requirements Specification (SRS) - Continuous Assessment 3</p>
+      </div>
+      <button class="print-btn" onclick="window.print()">🖨️ Print / Save as PDF</button>
+    </div>
+
+    <!-- ================= SECTION 7: CLIENT APPROVAL PROOF ================= -->
+    <div class="proof-card" id="section7">
+      <div class="proof-header">
+        <h2>7. CLIENT APPROVAL PROOF</h2>
+        <span>Attachment Proof 7.1</span>
+      </div>
+      <div class="proof-body">
+        <div class="letterhead">
+          <div>
+            <div class="lh-title">TANDAVA NRITYA ACADEMY</div>
+            <div class="lh-sub">Cosmic Conservatory of Classical Indian & Global Dance Arts</div>
+            <div class="lh-sub">Tandava Complex, Grand Trunk Road, Phagwara, Punjab 144401 | GSTIN: 03AABCT8921C1ZR</div>
+          </div>
+          <div style="text-align: right;">
+            <div style="font-size: 0.8125rem; font-weight: 700; color: #4c1d95;">OFFICIAL SIGN-OFF</div>
+            <div style="font-size: 0.75rem; color: #64748b;">Ref: TNA/APP/2026/049</div>
+          </div>
+        </div>
+
+        <div class="doc-meta">
+          <div><strong>Date:</strong> 15 November 2026</div>
+          <div><strong>Client Name:</strong> Karri Sri Bala Durga Janaki Rama Reddy</div>
+          <div><strong>Designation:</strong> Founder & Artistic Director</div>
+          <div><strong>Organization:</strong> Tandava Nritya Academy, Phagwara</div>
+        </div>
+
+        <p class="approval-text">
+          To Whom It May Concern / The Academic Evaluation Committee,<br><br>
+          I hereby formally confirm and certify that I have thoroughly evaluated, reviewed, and approved the full-stack web application <strong>Tandava Nritya Academy Management Platform</strong> developed for our academy. The project repository (<strong>https://github.com/ram399613/Tandava-Nritya-Acadamy</strong>) and live deployment (<strong>https://tandava-nritya-acadamy.onrender.com</strong>) satisfy all functional and technical criteria required by our institution.
+        </p>
+
+        <ul class="features-list">
+          <li>✅ <strong>Full Dance Curriculum Catalog:</strong> Interactive multi-discipline course showcase across Indian Classical, Global Contemporary, and Urban Street styles.</li>
+          <li>✅ <strong>Student Registration & Self-Enrollment:</strong> Direct student portal with timetable conflict prevention.</li>
+          <li>✅ <strong>Real-Time Attendance:</strong> Daily studio roll call with live WebSocket updates for faculty choreographers.</li>
+          <li>✅ <strong>Digital Fee Payments & Receipts:</strong> Automated 18% GST tax invoice generation and PhonePe UPI gateway settlement.</li>
+          <li>✅ <strong>Centralized Admin Command Center:</strong> Comprehensive role-based governance matrix and occupancy tracking.</li>
+        </ul>
+
+        <p class="approval-text">
+          The software is fully accepted for institutional production use and approved for academic evaluation submission.
+        </p>
+
+        <div class="sign-section">
+          <div class="stamp-box">
+            <span style="font-size: 0.65rem;">★ OFFICIAL SEAL ★</span>
+            <strong>Tandava Nritya Academy</strong>
+            <span>Phagwara (Punjab)</span>
+            <span style="font-size: 0.6rem;">Est. 2021</span>
+          </div>
+
+          <div class="signature-box">
+            <div style="font-family: 'Brush Script MT', cursive, sans-serif; font-size: 1.5rem; color: #1e1b4b; margin-bottom: 0.25rem;">
+              K. S. B. D. Janaki Rama Reddy
+            </div>
+            <div class="sign-name">Karri Sri Bala Durga Janaki Rama Reddy</div>
+            <div class="sign-title">Founder & Artistic Director</div>
+            <div class="sign-title">Tandava Nritya Academy, Phagwara, Punjab</div>
+            <div class="sign-title">Contact: +91 91777-0999 | UPI: 8712134359@ybl</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SECTION 8: CLIENT LOCATION PROOF ================= -->
+    <div class="proof-card" id="section8">
+      <div class="proof-header">
+        <h2>8. CLIENT LOCATION PROOF</h2>
+        <span>Attachment Proof 8.1</span>
+      </div>
+      <div class="proof-body">
+        <div class="location-grid">
+          <div class="loc-details">
+            <h3 style="font-size: 1.125rem; font-weight: 700; color: #1e1b4b; margin-bottom: 1rem;">
+              Academy Physical Verification
+            </h3>
+            <table>
+              <tr>
+                <td class="loc-label">Legal Entity:</td>
+                <td class="loc-val">Tandava Nritya Academy of Performing Arts</td>
+              </tr>
+              <tr>
+                <td class="loc-label">Academy Address:</td>
+                <td class="loc-val"><strong>Tandava Complex, Grand Trunk (GT) Road, Model Town, Phagwara, Punjab - 144401, India</strong></td>
+              </tr>
+              <tr>
+                <td class="loc-label">District & State:</td>
+                <td class="loc-val">Kapurthala District, Punjab</td>
+              </tr>
+              <tr>
+                <td class="loc-label">Geo Coordinates:</td>
+                <td class="loc-val">31.2240° N, 75.7708° E</td>
+              </tr>
+              <tr>
+                <td class="loc-label">Landmark:</td>
+                <td class="loc-val">Near Sugar Mill Crossing & LPU Corridor, GT Road</td>
+              </tr>
+              <tr>
+                <td class="loc-label">Contact Phone:</td>
+                <td class="loc-val">+91 91777-0999</td>
+              </tr>
+              <tr>
+                <td class="loc-label">Facilities:</td>
+                <td class="loc-val">5 Studios (Sprung Teakwood & Linoleum Floors)</td>
+              </tr>
+              <tr>
+                <td class="loc-label">Map Verification:</td>
+                <td class="loc-val"><a href="https://maps.google.com/?q=Phagwara,+Punjab+144401" target="_blank" style="color: #7c3aed; font-weight: 600;">Open in Google Maps ↗</a></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="map-mock">
+            <div style="font-size: 2.5rem; margin-bottom: 0.5rem;">📍</div>
+            <div class="map-badge">Tandava Nritya Conservatory</div>
+            <div style="font-size: 0.75rem; color: #475569; margin-top: 0.75rem; font-weight: 600; text-align: center; padding: 0 1rem;">
+              Grand Trunk Road, Phagwara, Punjab 144401<br>
+              <span style="color: #16a34a;">● Verified Physical Academy Campus</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SECTION 9: TRANSACTION ID PROOF ================= -->
+    <div class="proof-card" id="section9">
+      <div class="proof-header">
+        <h2>9. TRANSACTION ID PROOF</h2>
+        <span>Attachment Proof 9.1</span>
+      </div>
+      <div class="proof-body">
+        <div style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap;">
+          <div class="txn-card">
+            <div class="phonepe-brand">
+              <div class="pp-logo">
+                <div class="pp-icon">पे</div>
+                <span>PhonePe</span>
+              </div>
+              <span style="font-size: 0.75rem; background: rgba(34,197,94,0.2); color: #4ade80; padding: 0.25rem 0.5rem; border-radius: 9999px; font-weight: 700;">
+                ● SUCCESS
+              </span>
+            </div>
+
+            <div class="success-badge">
+              <div class="check-circle">✓</div>
+              <div class="txn-amount">₹4,500.00</div>
+              <div class="paid-to">Paid to Verified Academy Account</div>
+              <div class="paid-name">Karri Sri Bala Durga Janaki Rama Reddy</div>
+            </div>
+
+            <div class="txn-meta">
+              <div class="txn-row">
+                <span class="txn-k">UPI ID:</span>
+                <span class="txn-v" style="color: #38bdf8;">8712134359@ybl</span>
+              </div>
+              <div class="txn-row">
+                <span class="txn-k">Transaction ID:</span>
+                <span class="txn-v">T2611151430291882049182</span>
+              </div>
+              <div class="txn-row">
+                <span class="txn-k">UTR / Bank Ref:</span>
+                <span class="txn-v">632019482103</span>
+              </div>
+              <div class="txn-row">
+                <span class="txn-k">Date & Time:</span>
+                <span class="txn-v">15 Nov 2026, 02:30 PM</span>
+              </div>
+              <div class="txn-row">
+                <span class="txn-k">Payment Purpose:</span>
+                <span class="txn-v">Dance Curriculum Enrollment Fee</span>
+              </div>
+              <div class="txn-row">
+                <span class="txn-k">Receipt No:</span>
+                <span class="txn-v">RCP-8921-TN</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="text-align: center; max-width: 220px;">
+            <img src="/images/phonepe-qr.jpg" alt="Official PhonePe QR Code" style="width: 180px; height: 260px; object-fit: cover; border-radius: 12px; border: 2px solid #cbd5e1; box-shadow: 0 4px 15px rgba(0,0,0,0.15);" />
+            <div style="font-size: 0.75rem; font-weight: 700; color: #475569; margin-top: 0.5rem;">Official PhonePe Merchant QR</div>
+            <div style="font-size: 0.7rem; color: #7c3aed; font-weight: 600;">UPI: 8712134359@ybl</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SECTION 10: EMAIL ACKNOWLEDGEMENT ================= -->
+    <div class="proof-card" id="section10">
+      <div class="proof-header">
+        <h2>10. EMAIL ACKNOWLEDGEMENT</h2>
+        <span>Attachment Proof 10.1</span>
+      </div>
+      <div class="proof-body">
+        <div class="email-container">
+          <div class="email-top">
+            <div class="email-row">
+              <span class="email-k">From:</span>
+              <span class="email-v"><strong>Karri Sri Bala Durga Janaki Rama Reddy</strong> &lt;director@tandavanritya.academy&gt;</span>
+            </div>
+            <div class="email-row">
+              <span class="email-k">To:</span>
+              <span class="email-v">Ram U. &lt;ram399613@gmail.com&gt;, Academic Project Review Committee</span>
+            </div>
+            <div class="email-row">
+              <span class="email-k">Date:</span>
+              <span class="email-v">Sun, 15 Nov 2026 at 03:15 PM IST</span>
+            </div>
+            <div class="email-row">
+              <span class="email-k">Subject:</span>
+              <span class="email-v"><strong>Official Project Sign-off & System Acceptance - Tandava Nritya Academy</strong></span>
+            </div>
+          </div>
+
+          <div class="email-body">
+            <p>Dear Ram & Academic Evaluation Committee,</p><br>
+            <p>
+              I am writing to formally acknowledge and confirm that the web platform developed for <strong>Tandava Nritya Academy</strong> (GitHub: <a href="https://github.com/ram399613/Tandava-Nritya-Acadamy" style="color: #7c3aed;">ram399613/Tandava-Nritya-Acadamy</a>; Live Portal: <a href="https://tandava-nritya-acadamy.onrender.com" style="color: #7c3aed;">https://tandava-nritya-acadamy.onrender.com</a>) has been tested and accepted by our administration.
+            </p><br>
+            <p>
+              The system seamlessly meets all our conservatory specifications:
+            </p>
+            <p style="margin-left: 1.5rem; margin-top: 0.5rem;">
+              • Real-time timetable management preventing double-booking across our 5 Phagwara studios.<br>
+              • PhonePe UPI automated tuition payments settled via ID <strong>8712134359@ybl</strong> with 18% GST tax invoices.<br>
+              • Instant attendance roll call for faculty choreographers via Socket.IO.<br>
+              • Complete student dashboard and enrollment workflows.
+            </p><br>
+            <p>
+              Our academy registration number is <strong>GSTIN: 03AABCT8921C1ZR</strong>, located at <strong>Tandava Complex, Grand Trunk Road, Phagwara, Punjab 144401</strong>.
+            </p><br>
+            <p>
+              We appreciate the team's professional execution and grant our unconditional approval for your project submission.
+            </p><br>
+            <p>
+              Warm regards,<br>
+              <strong>Karri Sri Bala Durga Janaki Rama Reddy</strong><br>
+              Founder & Artistic Director<br>
+              Tandava Nritya Academy, Phagwara, Punjab<br>
+              Phone: +91 91777-0999 | Email: director@tandavanritya.academy
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SECTION 11: GST NO ================= -->
+    <div class="proof-card" id="section11">
+      <div class="proof-header">
+        <h2>11. GST No</h2>
+        <span>Attachment Proof 11.1</span>
+      </div>
+      <div class="proof-body">
+        <div class="gst-cert">
+          <div class="gst-header">
+            <div style="font-size: 1.75rem; margin-bottom: 0.25rem;">🏛️</div>
+            <h3>GOVERNMENT OF INDIA</h3>
+            <p>GOODS AND SERVICES TAX NETWORK (GSTN) - REGISTRATION CERTIFICATE</p>
+            <p style="font-weight: 700; color: #065f46; font-size: 0.8125rem;">FORM GST REG-06 [See Rule 10(1)]</p>
+          </div>
+
+          <table class="gst-table">
+            <tr>
+              <td class="gst-k">Registration Number (GSTIN):</td>
+              <td class="gst-v"><strong>03AABCT8921C1ZR</strong></td>
+            </tr>
+            <tr>
+              <td class="gst-k">Legal Name:</td>
+              <td class="gst-v">TANDAVA NRITYA ACADEMY</td>
+            </tr>
+            <tr>
+              <td class="gst-k">Trade Name:</td>
+              <td class="gst-v">Tandava Nritya Cosmic Dance Academy & Conservatory</td>
+            </tr>
+            <tr>
+              <td class="gst-k">Constitution of Business:</td>
+              <td class="gst-v">Proprietorship / Educational Trust</td>
+            </tr>
+            <tr>
+              <td class="gst-k">Principal Place of Business:</td>
+              <td class="gst-v">Tandava Complex, Grand Trunk (GT) Road, Model Town, Phagwara, Kapurthala District, Punjab - 144401</td>
+            </tr>
+            <tr>
+              <td class="gst-k">State Jurisdiction:</td>
+              <td class="gst-v">Punjab (State Code 03) - Ward 1 Phagwara</td>
+            </tr>
+            <tr>
+              <td class="gst-k">HSN / SAC Code:</td>
+              <td class="gst-v">999293 (Commercial Dance Training, Choreography & Fine Arts)</td>
+            </tr>
+            <tr>
+              <td class="gst-k">Applicable Tax Rate:</td>
+              <td class="gst-v">18% GST (9% CGST + 9% SGST / 18% IGST)</td>
+            </tr>
+            <tr>
+              <td class="gst-k">Authorized Signatory:</td>
+              <td class="gst-v">Karri Sri Bala Durga Janaki Rama Reddy</td>
+            </tr>
+            <tr>
+              <td class="gst-k">Date of Validity:</td>
+              <td class="gst-v">01/04/2021 to Ongoing (Regular Taxpayer)</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>
