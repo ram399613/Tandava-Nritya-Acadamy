@@ -35,8 +35,8 @@ export function downloadReceiptPDF(payment) {
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(203, 213, 225);
     doc.text('Cosmic Conservatory of Classical Indian & Global Dance Arts', 15, 27);
-    doc.text('88 Artistry Boulevard, Bandra West, Mumbai 400050 | GSTIN: 27AABCT1234D1Z5', 15, 33);
-    doc.text('contact@tandavanritya.academy | +91 98765 43210 | Official Tax Invoice', 15, 39);
+    doc.text('Tandava Complex, Grand Trunk (GT) Road, Phagwara, Punjab 144401 | GSTIN: 03AABCT8921C1ZR', 15, 33);
+    doc.text('director@tandavanritya.academy | +91 91777-0999 | UPI: 8712134359@ybl', 15, 39);
 
     
     doc.setFillColor(139, 92, 246);
@@ -224,7 +224,7 @@ export function printReceiptWindow(payment) {
           <div>
             <div class="brand">🔥 TANDAVA NRITYA ACADEMY</div>
             <div class="sub">Cosmic Conservatory of Classical Indian & Global Dance Arts</div>
-            <div class="sub">GSTIN: 27AABCT1234D1Z5 | Mumbai, India</div>
+            <div class="sub">GSTIN: 03AABCT8921C1ZR | Phagwara, Punjab, India | UPI: 8712134359@ybl</div>
           </div>
           <div style="text-align: right;">
             <div class="badge">PAID / CONFIRMED</div>

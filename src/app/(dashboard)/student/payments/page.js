@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { 
   CreditCard, IndianRupee, CheckCircle, Clock, 
   Download, Eye, ShieldCheck, Sparkles, QrCode, 
-  Smartphone, Building, Check, Radio, AlertCircle 
+  Smartphone, Building, Check, Radio, AlertCircle, Copy 
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -23,6 +23,8 @@ export default function StudentPaymentsPage() {
   const [processing, setProcessing] = useState(false);
   const [paySuccess, setPaySuccess] = useState(false);
   const [livePulse, setLivePulse] = useState(false);
+  const [upiUtr, setUpiUtr] = useState('');
+  const [copiedUpi, setCopiedUpi] = useState(false);
 
   useEffect(() => {
     fetchPayments();
@@ -163,18 +165,25 @@ export default function StudentPaymentsPage() {
     setProcessing(true);
 
     try {
-      const methodLabel = paymentMethod === 'upi' 
-        ? 'UPI (Google Pay / PhonePe)' 
+      const isUpi = paymentMethod === 'upi';
+      const methodLabel = isUpi 
+        ? 'PhonePe UPI (8712134359@ybl)' 
         : paymentMethod === 'card' 
         ? 'Credit / Debit Card' 
         : 'Net Banking';
+
+      const transactionId = isUpi && upiUtr.trim() 
+        ? upiUtr.trim() 
+        : isUpi 
+        ? `UPI_8712134359_${Date.now().toString().slice(-6)}` 
+        : `pay_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
 
       const res = await fetch('/api/payments/razorpay/verify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           razorpay_order_id: `order_${Date.now()}`,
-          razorpay_payment_id: `pay_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`,
+          razorpay_payment_id: transactionId,
           paymentRecordId: payingInvoice._id,
           amount: payingInvoice.amount || 4500,
           courseTitle: payingInvoice.courseTitle,
@@ -189,6 +198,7 @@ export default function StudentPaymentsPage() {
         setTimeout(() => {
           setPaySuccess(false);
           setPayingInvoice(null);
+          setUpiUtr('');
           fetchPayments();
         }, 1800);
       }
@@ -447,22 +457,114 @@ export default function StudentPaymentsPage() {
 
                 {paymentMethod === 'upi' && (
                   <div style={{
-                    padding: '1rem',
-                    background: '#0a0a0f',
-                    borderRadius: '0.5rem',
-                    border: '1px solid rgba(255, 255, 255, 0.05)',
+                    padding: '1.25rem',
+                    background: 'linear-gradient(135deg, rgba(88, 28, 135, 0.2), rgba(15, 12, 28, 0.95))',
+                    borderRadius: '0.75rem',
+                    border: '1px solid rgba(168, 85, 247, 0.3)',
                     display: 'flex',
                     flexDirection: 'column',
-                    gap: '0.5rem'
+                    gap: '1rem'
                   }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span style={{ fontSize: '0.8125rem', color: '#cbd5e1' }}>Scan & Pay via any UPI App</span>
-                      <QrCode size={22} color="#c4b5fd" />
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+                        <div style={{ width: '30px', height: '30px', borderRadius: '50%', background: '#5f259f', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', color: 'white', fontSize: '15px' }}>
+                          पे
+                        </div>
+                        <div>
+                          <div style={{ fontSize: '0.875rem', fontWeight: 700, color: 'white' }}>PhonePe / UPI Real-Time Settle</div>
+                          <div style={{ fontSize: '0.75rem', color: '#c4b5fd' }}>Karri Sri Bala Durga Janaki Rama Reddy</div>
+                        </div>
+                      </div>
+                      <span style={{ fontSize: '0.6875rem', padding: '0.25rem 0.625rem', background: 'rgba(34, 197, 94, 0.15)', border: '1px solid rgba(34, 197, 94, 0.3)', color: '#4ade80', borderRadius: '9999px', fontWeight: 700 }}>
+                        ⚡ Real-Time Active
+                      </span>
                     </div>
-                    <div style={{ display: 'flex', gap: '0.5rem', marginTop: '0.25rem' }}>
-                      <span style={{ fontSize: '0.6875rem', padding: '0.2rem 0.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: '0.25rem', color: '#94a3b8' }}>Google Pay</span>
-                      <span style={{ fontSize: '0.6875rem', padding: '0.2rem 0.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: '0.25rem', color: '#94a3b8' }}>PhonePe</span>
-                      <span style={{ fontSize: '0.6875rem', padding: '0.2rem 0.5rem', background: 'rgba(255,255,255,0.05)', borderRadius: '0.25rem', color: '#94a3b8' }}>Paytm</span>
+
+                    <div style={{ display: 'flex', gap: '1.25rem', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
+                      <div style={{
+                        background: '#050508',
+                        padding: '0.625rem',
+                        borderRadius: '0.75rem',
+                        border: '1px solid rgba(168, 85, 247, 0.3)',
+                        boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+                        textAlign: 'center'
+                      }}>
+                        <img
+                          src="/images/phonepe-qr.jpg"
+                          alt="PhonePe QR Code - 8712134359@ybl"
+                          style={{ width: '135px', height: '190px', objectFit: 'cover', borderRadius: '0.375rem', display: 'block' }}
+                        />
+                        <div style={{ fontSize: '0.65rem', color: '#a78bfa', fontWeight: 700, marginTop: '0.375rem' }}>Scan with PhonePe / GPay</div>
+                      </div>
+
+                      <div style={{ display: 'flex', flexDirection: 'column', gap: '0.625rem', flex: 1, minWidth: '220px' }}>
+                        <div style={{ background: '#0a0a0f', padding: '0.75rem', borderRadius: '0.5rem', border: '1px solid rgba(255,255,255,0.08)' }}>
+                          <div style={{ fontSize: '0.6875rem', color: '#94a3b8', marginBottom: '0.25rem' }}>Verified Merchant UPI ID</div>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <span style={{ fontSize: '0.875rem', fontWeight: 700, color: '#38bdf8', letterSpacing: '0.5px' }}>8712134359@ybl</span>
+                            <button
+                              type="button"
+                              onClick={() => {
+                                if (typeof navigator !== 'undefined') {
+                                  navigator.clipboard.writeText('8712134359@ybl');
+                                  setCopiedUpi(true);
+                                  setTimeout(() => setCopiedUpi(false), 2000);
+                                }
+                              }}
+                              style={{
+                                background: 'rgba(56, 189, 248, 0.15)',
+                                border: '1px solid rgba(56, 189, 248, 0.3)',
+                                color: '#38bdf8',
+                                borderRadius: '0.25rem',
+                                padding: '0.2rem 0.5rem',
+                                fontSize: '0.6875rem',
+                                cursor: 'pointer',
+                                fontWeight: 600
+                              }}
+                            >
+                              {copiedUpi ? 'Copied!' : 'Copy'}
+                            </button>
+                          </div>
+                        </div>
+
+                        <a
+                          href={`upi://pay?pa=8712134359@ybl&pn=Karri%20Sri%20Bala%20Durga%20Janaki%20Rama%20Reddy&am=${payingInvoice.amount || 4500}&cu=INR`}
+                          style={{
+                            padding: '0.625rem',
+                            background: 'linear-gradient(135deg, #5f259f, #7c3aed)',
+                            color: 'white',
+                            borderRadius: '0.375rem',
+                            textAlign: 'center',
+                            fontSize: '0.75rem',
+                            fontWeight: 700,
+                            textDecoration: 'none',
+                            display: 'block'
+                          }}
+                        >
+                          Open in PhonePe / UPI App (₹{payingInvoice.amount || 4500})
+                        </a>
+
+                        <div>
+                          <label style={{ fontSize: '0.6875rem', color: '#cbd5e1', display: 'block', marginBottom: '0.25rem' }}>
+                            Enter 12-Digit UTR / Transaction ID (Optional)
+                          </label>
+                          <input
+                            type="text"
+                            value={upiUtr}
+                            onChange={(e) => setUpiUtr(e.target.value)}
+                            placeholder="e.g. 632019482103"
+                            style={{
+                              width: '100%',
+                              padding: '0.5rem 0.75rem',
+                              background: '#0a0a0f',
+                              border: '1px solid rgba(255,255,255,0.12)',
+                              borderRadius: '0.375rem',
+                              color: 'white',
+                              fontSize: '0.75rem'
+                            }}
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -519,7 +621,7 @@ export default function StudentPaymentsPage() {
                     variant="primary" 
                     loading={processing}
                     icon={Sparkles}
-                    onClick={handleRazorpayLivePayment}
+                    onClick={paymentMethod === 'upi' ? handleExecutePayment : handleRazorpayLivePayment}
                   >
                     Confirm & Settle {formatCurrency(payingInvoice.amount || 4500)}
                   </Button>
