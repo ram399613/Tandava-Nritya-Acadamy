@@ -63,7 +63,7 @@ export async function POST(req) {
       }
 
       await mongoose.connect(mongoUri, {
-        serverSelectionTimeoutMS: 6000,
+        serverSelectionTimeoutMS: 12000,
         bufferCommands: false,
       });
     } catch (connErr) {
