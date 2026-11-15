@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+    <circle cx="24" cy="24" r="22" fill="#ec4899" fill-opacity="0.15" stroke="#ec4899" stroke-width="2"/>
+    <!-- Brass plate dance / Tarangam -->
+    <ellipse cx="24" cy="34" rx="14" ry="4" fill="#ca8a04" stroke="#facc15" stroke-width="2"/>
+    <path d="M24 14C24 14 20 24 20 30H28C28 24 24 14 24 14Z" fill="#ec4899" stroke="#f472b6" stroke-width="1.5"/>
+    <circle cx="24" cy="12" r="2.5" fill="#facc15"/>
+  </svg>

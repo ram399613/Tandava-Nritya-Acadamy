@@ -1,0 +1,29 @@
+{
+  "name": "dance-academy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dance Academy Management Platform - Full Stack Next.js & MongoDB",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js",
+    "seed": "node src/lib/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cloudinary": "^2.5.1",
+    "isomorphic-git": "^1.44.14",
+    "jsonwebtoken": "^9.0.2",
+    "jspdf": "^4.2.1",
+    "lucide-react": "^0.460.0",
+    "mongoose": "^8.8.2",
+    "next": "^14.2.20",
+    "razorpay": "^2.9.8",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "recharts": "^2.13.3",
+    "socket.io": "^4.8.1",
+    "socket.io-client": "^4.8.1",
+    "zod": "^3.23.8"
+  }
+}
