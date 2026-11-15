@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  FileCheck, Search, Filter, Check, X, Clock, 
-  User, BookOpen, IndianRupee, CheckCircle, AlertCircle 
+import {
+  FileCheck, Search, Filter, Check, X, Clock,
+  User, BookOpen, IndianRupee, CheckCircle, AlertCircle
 } from 'lucide-react';
 import Button from '@/components/common/Button';
 import Loader from '@/components/common/Loader';
@@ -20,7 +20,6 @@ export default function AdminEnrollmentsPage() {
   useEffect(() => {
     fetchEnrollments();
 
-    
     const socket = getSocket();
     if (socket) {
       socket.on('enrollment_created', (newEnrollment) => {
@@ -139,7 +138,7 @@ export default function AdminEnrollmentsPage() {
       {loading ? (
         <Loader text="Loading enrollments..." />
       ) : filteredEnrollments.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={FileCheck}
           title="No Enrollments Found"
           message="No student enrollments found matching the selected filter."
@@ -189,15 +188,15 @@ export default function AdminEnrollmentsPage() {
                       borderRadius: '9999px',
                       fontSize: '0.75rem',
                       fontWeight: 600,
-                      background: en.status === 'active' 
-                        ? 'rgba(16, 185, 129, 0.15)' 
-                        : en.status === 'cancelled' 
-                          ? 'rgba(239, 68, 68, 0.15)' 
+                      background: en.status === 'active'
+                        ? 'rgba(16, 185, 129, 0.15)'
+                        : en.status === 'cancelled'
+                          ? 'rgba(239, 68, 68, 0.15)'
                           : 'rgba(234, 179, 8, 0.15)',
-                      color: en.status === 'active' 
-                        ? '#34d399' 
-                        : en.status === 'cancelled' 
-                          ? '#f87171' 
+                      color: en.status === 'active'
+                        ? '#34d399'
+                        : en.status === 'cancelled'
+                          ? '#f87171'
                           : '#facc15'
                     }}>
                       {en.status || 'active'}
@@ -206,17 +205,17 @@ export default function AdminEnrollmentsPage() {
                   <td style={{ padding: '1rem', textAlign: 'right' }}>
                     {en.status === 'pending' ? (
                       <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
-                        <Button 
-                          variant="primary" 
-                          size="sm" 
+                        <Button
+                          variant="primary"
+                          size="sm"
                           icon={Check}
                           onClick={() => handleStatusChange(en._id, 'active')}
                         >
                           Approve
                         </Button>
-                        <Button 
-                          variant="danger" 
-                          size="sm" 
+                        <Button
+                          variant="danger"
+                          size="sm"
                           icon={X}
                           onClick={() => handleStatusChange(en._id, 'cancelled')}
                         >

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Bell, Send, Plus, Users, UserCheck, AlertTriangle, 
-  Info, CheckCircle, Radio, Clock 
+import {
+  Bell, Send, Plus, Users, UserCheck, AlertTriangle,
+  Info, CheckCircle, Radio, Clock
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -101,7 +101,7 @@ export default function AdminNotificationsPage() {
       {loading ? (
         <Loader text="Loading announcements..." />
       ) : notifications.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={Bell}
           title="No Announcements"
           message="No broadcast messages have been sent yet. Click 'Broadcast Announcement' to send one."
@@ -109,7 +109,7 @@ export default function AdminNotificationsPage() {
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {notifications.map((n, idx) => (
-            <div 
+            <div
               key={n._id || idx}
               className="glass-panel"
               style={{

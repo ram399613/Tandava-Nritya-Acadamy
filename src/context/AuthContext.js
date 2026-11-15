@@ -24,7 +24,7 @@ export function AuthProvider({ children }) {
         if (data.success && data.user) {
           setUser(data.user);
         } else {
-          
+
           const localUser = localStorage.getItem('dance_user');
           if (localUser) {
             setUser(JSON.parse(localUser));
@@ -58,7 +58,6 @@ export function AuthProvider({ children }) {
     setUser(data.user);
     localStorage.setItem('dance_user', JSON.stringify(data.user));
 
-    
     if (data.user.role === 'admin') router.push('/admin');
     else if (data.user.role === 'instructor') router.push('/instructor');
     else router.push('/student');

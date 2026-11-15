@@ -30,7 +30,7 @@ export function getInitials(name) {
 }
 
 export const DANCE_CATEGORIES = [
-  
+
   { value: 'bharatanatyam', label: '1. Bharatanatyam', color: '#ef4444', icon: '🪔', svgIcon: '/icons/bharatanatyam.svg', photo: '/images/bharatanatyam.jpg' },
   { value: 'kathak', label: '2. Kathak', color: '#f59e0b', icon: '🕉️', svgIcon: '/icons/kathak.svg', photo: '/images/kathak.jpg' },
   { value: 'odissi', label: '3. Odissi', color: '#ec4899', icon: '🌸', svgIcon: '/icons/odissi.svg', photo: '/images/odissi.jpg' },
@@ -40,7 +40,6 @@ export const DANCE_CATEGORIES = [
   { value: 'manipuri', label: '7. Manipuri', color: '#06b6d4', icon: '🕊️', svgIcon: '/icons/manipuri.svg', photo: '/images/manipuri.jpg' },
   { value: 'sattriya', label: '8. Sattriya', color: '#f97316', icon: '📜', svgIcon: '/icons/sattriya.svg', photo: '/images/sattriya.jpg' },
 
-  
   { value: 'hip-hop', label: 'Hip-Hop & Urban', color: '#8b5cf6', icon: '🔥', svgIcon: '/icons/hiphop.svg', photo: '/images/hiphop.jpg' },
   { value: 'ballet', label: 'Classical Russian Ballet & Pointe', color: '#f472b6', icon: '🩰', svgIcon: '/icons/ballet.svg', photo: '/images/ballet.jpg' },
   { value: 'contemporary', label: 'Contemporary Movement & Flow', color: '#3b82f6', icon: '🌊', svgIcon: '/icons/contemporary.svg', photo: '/images/contemporary.jpg' },

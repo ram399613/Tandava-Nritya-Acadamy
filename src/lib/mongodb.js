@@ -1,10 +1,8 @@
 import mongoose from 'mongoose';
 
-
 mongoose.set('bufferCommands', false);
 
 const MONGODB_URI = process.env.MONGODB_URI;
-
 
 let cached = global.mongoose;
 
@@ -18,7 +16,7 @@ export default async function dbConnect() {
   }
 
   if (!MONGODB_URI || MONGODB_URI.includes('placeholder')) {
-    
+
     return null;
   }
 

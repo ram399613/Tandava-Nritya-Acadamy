@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  CreditCard, Search, Filter, IndianRupee, CheckCircle, 
-  Clock, Download, Eye, ArrowUpRight, TrendingUp, Radio 
+import {
+  CreditCard, Search, Filter, IndianRupee, CheckCircle,
+  Clock, Download, Eye, ArrowUpRight, TrendingUp, Radio
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -84,10 +84,10 @@ export default function AdminPaymentsPage() {
     const matchesSearch = student.toLowerCase().includes(searchTerm.toLowerCase()) ||
                           course.toLowerCase().includes(searchTerm.toLowerCase());
     const isPaid = p.status === 'completed' || p.status === 'paid';
-    const matchesStatus = filterStatus === 'All' 
-      ? true 
-      : filterStatus === 'completed' || filterStatus === 'paid' 
-      ? isPaid 
+    const matchesStatus = filterStatus === 'All'
+      ? true
+      : filterStatus === 'completed' || filterStatus === 'paid'
+      ? isPaid
       : p.status === 'pending';
     return matchesSearch && matchesStatus;
   });
@@ -196,7 +196,7 @@ export default function AdminPaymentsPage() {
       {loading ? (
         <Loader text="Loading ledger and payment records..." />
       ) : filteredPayments.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={CreditCard}
           title="No Transactions Found"
           message="No payment transactions match your query."
@@ -252,17 +252,17 @@ export default function AdminPaymentsPage() {
                   <td style={{ padding: '1rem', textAlign: 'right' }}>
                     <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
                       {p.status === 'pending' && (
-                        <Button 
-                          variant="primary" 
-                          size="sm" 
+                        <Button
+                          variant="primary"
+                          size="sm"
                           onClick={() => handleMarkPaid(p._id)}
                         >
                           Mark Paid
                         </Button>
                       )}
-                      <Button 
-                        variant="outline" 
-                        size="sm" 
+                      <Button
+                        variant="outline"
+                        size="sm"
                         icon={Eye}
                         onClick={() => setSelectedReceipt(p)}
                       >

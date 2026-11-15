@@ -27,12 +27,10 @@ export async function GET(req) {
       courseCount = await Course.countDocuments({ isActive: true });
       enrollmentCount = await Enrollment.countDocuments({ status: 'approved' });
 
-      
       const dayNames = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
       const today = dayNames[new Date().getDay()];
       todayClassesCount = await ClassSession.countDocuments({ dayOfWeek: today, status: 'scheduled' });
 
-      
       const payments = await Payment.find({ status: 'completed' });
       if (payments.length > 0) {
         monthlyRevenue = payments.reduce((acc, p) => acc + (p.amount || 0), 0);

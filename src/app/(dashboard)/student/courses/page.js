@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  BookOpen, Search, Filter, CheckCircle2, Clock, 
-  MapPin, IndianRupee, Sparkles, Check 
+import {
+  BookOpen, Search, Filter, CheckCircle2, Clock,
+  MapPin, IndianRupee, Sparkles, Check
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -126,7 +126,7 @@ export default function StudentCoursesPage() {
       {loading ? (
         <Loader text="Loading catalog..." />
       ) : filtered.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={BookOpen}
           title="No Courses Found"
           message="No dance courses match your search criteria."
@@ -136,7 +136,7 @@ export default function StudentCoursesPage() {
           {filtered.map((c, idx) => {
             const seatsLeft = (c.maxCapacity || 20) - (c.enrolledCount || 0);
             return (
-              <div 
+              <div
                 key={c._id || idx}
                 className="glass-panel"
                 style={{
@@ -220,9 +220,9 @@ export default function StudentCoursesPage() {
                       <div style={{ fontSize: '0.6875rem', color: '#64748b' }}>TUITION</div>
                       <div style={{ fontSize: '1.25rem', fontWeight: 700, color: 'white' }}>{formatCurrency(c.fee)}</div>
                     </div>
-                    <Button 
-                      variant="primary" 
-                      size="sm" 
+                    <Button
+                      variant="primary"
+                      size="sm"
                       icon={Sparkles}
                       onClick={() => setSelectedCourse(c)}
                     >

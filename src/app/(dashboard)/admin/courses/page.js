@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  BookOpen, Search, Plus, Filter, Edit, Trash2, 
-  Users, IndianRupee, Clock, CheckCircle, AlertCircle 
+import {
+  BookOpen, Search, Plus, Filter, Edit, Trash2,
+  Users, IndianRupee, Clock, CheckCircle, AlertCircle
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -92,8 +92,8 @@ export default function AdminCoursesPage() {
     try {
       const payload = {
         ...formData,
-        scheduleDays: typeof formData.scheduleDays === 'string' 
-          ? formData.scheduleDays.split(',').map(s => s.trim()) 
+        scheduleDays: typeof formData.scheduleDays === 'string'
+          ? formData.scheduleDays.split(',').map(s => s.trim())
           : formData.scheduleDays
       };
 
@@ -187,7 +187,7 @@ export default function AdminCoursesPage() {
       {loading ? (
         <Loader text="Loading academy courses..." />
       ) : filteredCourses.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={BookOpen}
           title="No Courses Found"
           message="No dance curriculum matches your criteria. Create one using the button above."
@@ -197,7 +197,7 @@ export default function AdminCoursesPage() {
           {filteredCourses.map((c, idx) => {
             const seatsLeft = (c.maxCapacity || 20) - (c.enrolledCount || 0);
             return (
-              <div 
+              <div
                 key={c._id || idx}
                 className="glass-panel"
                 style={{

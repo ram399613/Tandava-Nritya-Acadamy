@@ -373,7 +373,6 @@ export async function POST(req) {
     const authUser = await getAuthUser(req);
     const body = await req.json();
 
-    
     const collision = SEED_TIMETABLE.find(
       (s) =>
         s.dayOfWeek.toLowerCase() === body.dayOfWeek.toLowerCase() &&

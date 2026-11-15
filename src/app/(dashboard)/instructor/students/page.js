@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Users, Search, Award, TrendingUp, Mail, Phone, 
-  CheckCircle, Clock, Star 
+import {
+  Users, Search, Award, TrendingUp, Mail, Phone,
+  CheckCircle, Clock, Star
 } from 'lucide-react';
 import Loader from '@/components/common/Loader';
 import EmptyState from '@/components/common/EmptyState';
@@ -34,7 +34,7 @@ export default function InstructorStudentsPage() {
     fetchStudents();
   }, []);
 
-  const filtered = (students || []).filter(s => 
+  const filtered = (students || []).filter(s =>
     s && (
       (s.name || '').toLowerCase().includes(searchTerm.toLowerCase()) ||
       (s.email || '').toLowerCase().includes(searchTerm.toLowerCase())
@@ -80,7 +80,7 @@ export default function InstructorStudentsPage() {
       {loading ? (
         <Loader text="Loading your students..." />
       ) : filtered.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={Users}
           title="No Dancers Found"
           message="No student profiles match your search."

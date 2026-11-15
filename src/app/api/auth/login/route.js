@@ -31,7 +31,6 @@ export async function POST(req) {
     const validatedData = loginSchema.parse(body);
     const emailLower = validatedData.email.toLowerCase().trim();
 
-    
     if (DEMO_ACCOUNTS[emailLower] || emailLower.endsWith('@danceacademy.com')) {
       const demoConfig = DEMO_ACCOUNTS[emailLower] || {
         role: emailLower.includes('admin')
@@ -72,7 +71,6 @@ export async function POST(req) {
       return res;
     }
 
-    
     let conn = null;
     try {
       conn = await dbConnect();

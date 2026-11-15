@@ -96,7 +96,6 @@ export async function POST(req) {
 
     let courseObj = null;
 
-    
     try {
       const conn = await dbConnect();
       if (conn && isDbConnected() && courseId) {
@@ -104,7 +103,6 @@ export async function POST(req) {
       }
     } catch (_) {}
 
-    
     if (!courseObj) {
       courseObj = {
         _id: courseId || 'crs_' + Date.now(),
@@ -119,7 +117,6 @@ export async function POST(req) {
     const courseTitle = courseObj.name || courseObj.title || 'Academy Dance Discipline';
     const courseFee = courseObj.fee || 4500;
 
-    
     const existing = global._danceflowEnrollments.find(
       (e) => (e.student?.email === studentEmail || e.studentName === studentName) &&
              (e.courseTitle === courseTitle || e.course?.name === courseTitle)
@@ -132,7 +129,6 @@ export async function POST(req) {
       }, { status: 400 });
     }
 
-    
     const newEnrollment = {
       _id: `enr_${Date.now()}`,
       student: { fullName: studentName, email: studentEmail, name: studentName },
@@ -151,7 +147,6 @@ export async function POST(req) {
 
     global._danceflowEnrollments.unshift(newEnrollment);
 
-    
     const pendingInvoice = createPendingInvoice({
       studentName,
       studentId,
@@ -160,7 +155,6 @@ export async function POST(req) {
       amount: courseFee,
     });
 
-    
     try {
       const conn = await dbConnect();
       if (conn && isDbConnected()) {
@@ -181,7 +175,6 @@ export async function POST(req) {
       }
     } catch (_) {}
 
-    
     if (global.io) {
       global.io.emit('new_enrollment', newEnrollment);
       global.io.emit('enrollment_created', newEnrollment);

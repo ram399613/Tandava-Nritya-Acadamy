@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Award, Search, Plus, Mail, Phone, Calendar, 
-  BookOpen, Star, CheckCircle, Clock 
+import {
+  Award, Search, Plus, Mail, Phone, Calendar,
+  BookOpen, Star, CheckCircle, Clock
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -95,8 +95,8 @@ export default function AdminInstructorsPage() {
             Manage elite choreographers, master instructors, and teaching schedules
           </p>
         </div>
-        <Button 
-          variant="primary" 
+        <Button
+          variant="primary"
           icon={Plus}
           onClick={() => setIsAddModalOpen(true)}
         >
@@ -131,7 +131,7 @@ export default function AdminInstructorsPage() {
       {loading ? (
         <Loader text="Loading faculty members..." />
       ) : filteredInstructors.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={Award}
           title="No Instructors Found"
           message="No faculty profiles match your search criteria."
@@ -139,7 +139,7 @@ export default function AdminInstructorsPage() {
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.5rem' }}>
           {filteredInstructors.map((inst, idx) => (
-            <div 
+            <div
               key={inst._id || idx}
               className="glass-panel"
               style={{
@@ -183,7 +183,7 @@ export default function AdminInstructorsPage() {
                 <div style={{ fontSize: '0.75rem', color: '#64748b', marginBottom: '0.375rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Disciplines</div>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
                   {(inst.specialties || ['Contemporary', 'Ballet']).map((spec, i) => (
-                    <span 
+                    <span
                       key={i}
                       style={{
                         padding: '0.2rem 0.5rem',

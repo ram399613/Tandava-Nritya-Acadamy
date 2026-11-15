@@ -56,7 +56,6 @@ export async function POST(req) {
       );
     }
 
-    
     try {
       if (mongoose.connection.readyState !== 0) {
         await mongoose.disconnect();
@@ -73,7 +72,6 @@ export async function POST(req) {
       );
     }
 
-    
     try {
       const envPath = path.join(process.cwd(), '.env.local');
       let envContent = '';
@@ -95,7 +93,6 @@ export async function POST(req) {
 
     let seededCount = 0;
 
-    
     if (seedData) {
       try {
         const userCount = await User.countDocuments();

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  UserCheck, Search, Filter, Calendar, CheckCircle2, 
-  XCircle, Clock, Radio, Users, BookOpen 
+import {
+  UserCheck, Search, Filter, Calendar, CheckCircle2,
+  XCircle, Clock, Radio, Users, BookOpen
 } from 'lucide-react';
 import Button from '@/components/common/Button';
 import Loader from '@/components/common/Loader';
@@ -21,7 +21,6 @@ export default function AdminAttendancePage() {
   useEffect(() => {
     fetchAttendance();
 
-    
     const socket = getSocket();
     if (socket) {
       socket.on('attendance_marked', (newRecord) => {
@@ -145,7 +144,7 @@ export default function AdminAttendancePage() {
       {loading ? (
         <Loader text="Loading attendance stream..." />
       ) : filteredRecords.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={UserCheck}
           title="No Records Found"
           message={`No attendance entries recorded for ${selectedDate}.`}
@@ -186,15 +185,15 @@ export default function AdminAttendancePage() {
                       borderRadius: '9999px',
                       fontSize: '0.75rem',
                       fontWeight: 600,
-                      background: r.status === 'present' 
-                        ? 'rgba(16, 185, 129, 0.15)' 
-                        : r.status === 'late' 
-                          ? 'rgba(234, 179, 8, 0.15)' 
+                      background: r.status === 'present'
+                        ? 'rgba(16, 185, 129, 0.15)'
+                        : r.status === 'late'
+                          ? 'rgba(234, 179, 8, 0.15)'
                           : 'rgba(239, 68, 68, 0.15)',
-                      color: r.status === 'present' 
-                        ? '#34d399' 
-                        : r.status === 'late' 
-                          ? '#facc15' 
+                      color: r.status === 'present'
+                        ? '#34d399'
+                        : r.status === 'late'
+                          ? '#facc15'
                           : '#f87171'
                     }}>
                       {r.status === 'present' && <CheckCircle2 size={12} />}

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Users, Search, Filter, Plus, Eye, MoreVertical, 
-  Mail, Phone, Calendar, Award, CheckCircle, Clock 
+import {
+  Users, Search, Filter, Plus, Eye, MoreVertical,
+  Mail, Phone, Calendar, Award, CheckCircle, Clock
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -116,7 +116,7 @@ export default function AdminStudentsPage() {
       {loading ? (
         <Loader text="Loading academy students roster..." />
       ) : filteredStudents.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={Users}
           title="No Students Found"
           message={searchTerm ? "No student matches your search query." : "No registered students yet in the database."}
@@ -203,9 +203,9 @@ export default function AdminStudentsPage() {
                     </span>
                   </td>
                   <td style={{ padding: '1rem', textAlign: 'right' }}>
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
+                    <Button
+                      variant="outline"
+                      size="sm"
                       icon={Eye}
                       onClick={() => handleView(s)}
                     >
@@ -221,8 +221,8 @@ export default function AdminStudentsPage() {
 
       {}
       {selectedStudent && (
-        <Modal 
-          isOpen={isModalOpen} 
+        <Modal
+          isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
           title={`Dancer Profile: ${selectedStudent.name}`}
           size="lg"

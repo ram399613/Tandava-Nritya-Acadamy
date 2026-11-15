@@ -70,7 +70,7 @@ const FALLBACK_STUDENTS = [
 export async function GET(req) {
   try {
     const authUser = await getAuthUser(req);
-    
+
     const { searchParams } = new URL(req.url);
     const search = searchParams.get('search');
 

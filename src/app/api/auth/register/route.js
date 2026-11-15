@@ -12,7 +12,6 @@ export async function POST(req) {
 
     await dbConnect();
 
-    
     const existing = await User.findOne({ email: validatedData.email });
     if (existing) {
       return NextResponse.json(

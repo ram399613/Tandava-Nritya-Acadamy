@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  BookOpen, Users, Clock, MapPin, Calendar, 
-  ArrowRight, CheckCircle2 
+import {
+  BookOpen, Users, Clock, MapPin, Calendar,
+  ArrowRight, CheckCircle2
 } from 'lucide-react';
 import Button from '@/components/common/Button';
 import Loader from '@/components/common/Loader';
@@ -46,7 +46,7 @@ export default function InstructorClassesPage() {
       {loading ? (
         <Loader text="Loading your assigned classes..." />
       ) : courses.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={BookOpen}
           title="No Classes Assigned"
           message="You currently have no dance classes assigned to your schedule."
@@ -54,7 +54,7 @@ export default function InstructorClassesPage() {
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.5rem' }}>
           {courses.map((c, idx) => (
-            <div 
+            <div
               key={c._id || idx}
               className="glass-panel"
               style={{

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  UserCheck, Check, X, Clock, Send, Radio, 
-  CheckCircle2, AlertCircle, BookOpen 
+import {
+  UserCheck, Check, X, Clock, Send, Radio,
+  CheckCircle2, AlertCircle, BookOpen
 } from 'lucide-react';
 import Button from '@/components/common/Button';
 import Loader from '@/components/common/Loader';
@@ -28,14 +28,14 @@ export default function InstructorAttendancePage() {
         ]);
         const cData = await cRes.json();
         const sData = await sRes.json();
-        
+
         if (cData.success && cData.courses.length > 0) {
           setCourses(cData.courses);
           setSelectedCourse(cData.courses[0]._id);
         }
         if (sData.success) {
           setStudents(sData.students);
-          
+
           const initialMap = {};
           sData.students.forEach(s => {
             initialMap[s._id] = 'present';
@@ -301,10 +301,10 @@ export default function InstructorAttendancePage() {
 
       {}
       <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '1rem' }}>
-        <Button 
-          variant="primary" 
-          size="lg" 
-          icon={Send} 
+        <Button
+          variant="primary"
+          size="lg"
+          icon={Send}
           loading={submitting}
           onClick={handleBroadcast}
         >

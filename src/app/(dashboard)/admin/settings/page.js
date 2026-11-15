@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Settings, Save, Building, Bell, Shield, 
-  Clock, IndianRupee, Mail, CheckCircle, 
+import {
+  Settings, Save, Building, Bell, Shield,
+  Clock, IndianRupee, Mail, CheckCircle,
   Palette, Sliders, Volume2, Database, Download,
   Radio, Smartphone, Sparkles, RefreshCw, Key,
   Check, AlertTriangle, Server, Users, Activity,
@@ -20,7 +20,6 @@ export default function AdminSettingsPage() {
   const [glassOpacity, setGlassOpacity] = useState(10);
   const [blurAmount, setBlurAmount] = useState(4);
 
-  
   const [studios, setStudios] = useState([
     { id: 1, name: 'Studio 1 - Grand Hall (Phagwara)', capacity: 45, occupied: 38, ac: true, audio: true, floor: 'Sprung Teak Wood' },
     { id: 2, name: 'Studio 2 - Nataraja Sanctum', capacity: 28, occupied: 22, ac: true, audio: true, floor: 'Cushioned Linoleum' },
@@ -29,7 +28,6 @@ export default function AdminSettingsPage() {
     { id: 5, name: 'Studio 5 - Aerial & Contemporary Loft', capacity: 18, occupied: 12, ac: true, audio: true, floor: 'Shock Foam & Teak' },
   ]);
 
-  
   const [security, setSecurity] = useState({
     twoFactorAuth: false,
     sessionTimeout: '60',
@@ -41,7 +39,6 @@ export default function AdminSettingsPage() {
     maintenanceMode: false,
   });
 
-  
   const [systemHealth] = useState({
     uptime: '99.98%',
     latency: '8ms',
@@ -50,7 +47,6 @@ export default function AdminSettingsPage() {
     serverVersion: 'Next.js 14.2 & Socket.IO 4.8',
   });
 
-  
   const [dbStatus, setDbStatus] = useState({
     connected: false,
     readyState: 0,
@@ -62,7 +58,6 @@ export default function AdminSettingsPage() {
   const [connectingDb, setConnectingDb] = useState(false);
   const [dbFeedback, setDbFeedback] = useState({ success: '', error: '' });
 
-  
   const [razorpayKeys, setRazorpayKeys] = useState({
     keyId: '',
     keySecret: '',

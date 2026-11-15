@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  FileCheck, Clock, MapPin, User, CheckCircle, 
-  Calendar, ArrowRight 
+import {
+  FileCheck, Clock, MapPin, User, CheckCircle,
+  Calendar, ArrowRight
 } from 'lucide-react';
 import Button from '@/components/common/Button';
 import Loader from '@/components/common/Loader';
@@ -52,7 +52,7 @@ export default function StudentEnrollmentsPage() {
       {loading ? (
         <Loader text="Loading your enrollments..." />
       ) : enrollments.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={FileCheck}
           title="No Active Enrollments"
           message="You are not enrolled in any dance disciplines yet. Explore our catalog to register!"
@@ -60,7 +60,7 @@ export default function StudentEnrollmentsPage() {
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.5rem' }}>
           {enrollments.map((en, idx) => (
-            <div 
+            <div
               key={en._id || idx}
               className="glass-panel"
               style={{

@@ -3,9 +3,9 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
-import { 
-  ArrowLeft, Calendar, Clock, MapPin, Users, Award, 
-  Sparkles, Check, IndianRupee, ShieldCheck, Star 
+import {
+  ArrowLeft, Calendar, Clock, MapPin, Users, Award,
+  Sparkles, Check, IndianRupee, ShieldCheck, Star
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -31,7 +31,7 @@ export default function CourseDetailPage() {
         if (data.success && data.course) {
           setCourse(data.course);
         } else {
-          
+
           const allRes = await fetch('/api/courses');
           const allData = await allRes.json();
           const list = allData.courses || allData.data || [];
@@ -87,7 +87,7 @@ export default function CourseDetailPage() {
       </Link>
 
       {}
-      <div 
+      <div
         className="glass-panel"
         style={{
           borderRadius: '1.25rem',
@@ -155,8 +155,8 @@ export default function CourseDetailPage() {
 
         {}
         <div style={{ position: 'relative', borderRadius: '1rem', overflow: 'hidden', minHeight: '300px' }}>
-          <img 
-            src={course.photo || 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop'} 
+          <img
+            src={course.photo || 'https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=800&auto=format&fit=crop'}
             alt={course.title}
             style={{ width: '100%', height: '100%', objectFit: 'cover' }}
           />

@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Calendar, Clock, Plus, MapPin, User, AlertTriangle, 
-  Trash2, Filter, CheckCircle2 
+import {
+  Calendar, Clock, Plus, MapPin, User, AlertTriangle,
+  Trash2, Filter, CheckCircle2
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -133,9 +133,9 @@ export default function AdminTimetablePage() {
             Live scheduling across Studios 1–5 with automated conflict detection & real-time booking updates
           </p>
         </div>
-        <Button 
-          variant="primary" 
-          icon={Plus} 
+        <Button
+          variant="primary"
+          icon={Plus}
           onClick={() => {
             setConflictError('');
             setIsModalOpen(true);
@@ -191,7 +191,7 @@ export default function AdminTimetablePage() {
       {loading ? (
         <Loader text="Analyzing timetable and bookings..." />
       ) : filteredSessions.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={Calendar}
           title="No Sessions Scheduled"
           message={`No classes scheduled for ${selectedDay === 'All' ? 'this week' : selectedDay}.`}
@@ -199,7 +199,7 @@ export default function AdminTimetablePage() {
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
           {filteredSessions.map((session, idx) => (
-            <div 
+            <div
               key={session._id || idx}
               className="glass-panel"
               style={{

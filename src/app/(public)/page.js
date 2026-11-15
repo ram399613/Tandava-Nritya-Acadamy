@@ -56,7 +56,6 @@ export default function HomePage() {
           }}
         />
 
-
         <h1
           className="nextjs-heading"
           style={{
@@ -333,11 +332,11 @@ export default function HomePage() {
               }}
             >
               <div style={{ position: 'relative', height: '140px', overflow: 'hidden' }}>
-                <img 
-                  src={cat.photo} 
-                  alt={cat.label} 
+                <img
+                  src={cat.photo}
+                  alt={cat.label}
                   className="course-card-img"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }} 
+                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                 />
                 <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(14,12,24,0.95) 0%, transparent 60%)' }} />
                 <div style={{ position: 'absolute', top: '0.75rem', left: '0.75rem', display: 'flex', alignItems: 'center', gap: '0.35rem', background: 'rgba(14,12,24,0.75)', borderRadius: '8px', padding: '0.25rem 0.5rem', border: '1px solid rgba(255,255,255,0.15)', backdropFilter: 'blur(8px)' }}>

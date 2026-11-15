@@ -2,9 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { 
-  BookOpen, Calendar, Clock, Award, CheckCircle2, 
-  CreditCard, ArrowRight, Radio, Bell 
+import {
+  BookOpen, Calendar, Clock, Award, CheckCircle2,
+  CreditCard, ArrowRight, Radio, Bell
 } from 'lucide-react';
 import Button from '@/components/common/Button';
 import Loader from '@/components/common/Loader';
@@ -171,7 +171,7 @@ export default function StudentDashboard() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {courses.map((c, idx) => (
-              <div 
+              <div
                 key={c._id || idx}
                 style={{
                   background: '#0a0a0f',
@@ -213,7 +213,7 @@ export default function StudentDashboard() {
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
             {notifications.map((n, idx) => (
-              <div 
+              <div
                 key={n._id || idx}
                 style={{
                   background: '#0a0a0f',

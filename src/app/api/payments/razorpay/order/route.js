@@ -23,14 +23,14 @@ export async function POST(req) {
     let order = null;
 
     if (isLiveConfigured) {
-      
+
       const instance = new Razorpay({
         key_id: keyId,
         key_secret: keySecret,
       });
 
       const options = {
-        amount: Math.round(Number(amount) * 100), 
+        amount: Math.round(Number(amount) * 100),
         currency: currency.replace(/[^A-Z]/g, '') || 'INR',
         receipt: `rcpt_${Date.now()}_${Math.floor(Math.random() * 1000)}`,
         notes: {
@@ -42,7 +42,7 @@ export async function POST(req) {
 
       order = await instance.orders.create(options);
     } else {
-      
+
       order = {
         id: `order_${Date.now()}_${Math.random().toString(36).substring(2, 9)}`,
         amount: Math.round(Number(amount) * 100),

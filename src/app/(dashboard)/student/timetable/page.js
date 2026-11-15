@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  Calendar, Clock, MapPin, User, CheckCircle2 
+import {
+  Calendar, Clock, MapPin, User, CheckCircle2
 } from 'lucide-react';
 import Loader from '@/components/common/Loader';
 import EmptyState from '@/components/common/EmptyState';
@@ -94,7 +94,7 @@ export default function StudentTimetablePage() {
       {loading ? (
         <Loader text="Loading your studio timetable..." />
       ) : filtered.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={Calendar}
           title="No Classes Scheduled"
           message={`You have no classes scheduled on ${selectedDay === 'All' ? 'this week' : selectedDay}.`}
@@ -102,7 +102,7 @@ export default function StudentTimetablePage() {
       ) : (
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))', gap: '1.25rem' }}>
           {filtered.map((s, idx) => (
-            <div 
+            <div
               key={s._id || idx}
               className="glass-panel"
               style={{

@@ -22,7 +22,7 @@ export async function POST(req) {
     let isValid = false;
 
     if (isLiveConfigured && razorpay_signature) {
-      
+
       const generatedSignature = crypto
         .createHmac('sha256', keySecret)
         .update(`${razorpay_order_id}|${razorpay_payment_id}`)
@@ -37,7 +37,7 @@ export async function POST(req) {
         );
       }
     } else {
-      
+
       isValid = true;
     }
 

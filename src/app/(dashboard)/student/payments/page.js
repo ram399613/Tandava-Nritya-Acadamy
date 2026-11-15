@@ -1,10 +1,10 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  CreditCard, IndianRupee, CheckCircle, Clock, 
-  Download, Eye, ShieldCheck, Sparkles, QrCode, 
-  Smartphone, Building, Check, Radio, AlertCircle, Copy 
+import {
+  CreditCard, IndianRupee, CheckCircle, Clock,
+  Download, Eye, ShieldCheck, Sparkles, QrCode,
+  Smartphone, Building, Check, Radio, AlertCircle, Copy
 } from 'lucide-react';
 import Modal from '@/components/common/Modal';
 import Button from '@/components/common/Button';
@@ -29,7 +29,6 @@ export default function StudentPaymentsPage() {
   useEffect(() => {
     fetchPayments();
 
-    
     if (typeof window !== 'undefined' && !window.Razorpay) {
       const script = document.createElement('script');
       script.src = 'https://checkout.razorpay.com/v1/checkout.js';
@@ -37,7 +36,6 @@ export default function StudentPaymentsPage() {
       document.body.appendChild(script);
     }
 
-    
     const socket = getSocket();
     if (socket) {
       socket.on('payment_updated', (updatedRecord) => {
@@ -80,7 +78,7 @@ export default function StudentPaymentsPage() {
     setProcessing(true);
 
     try {
-      
+
       const orderRes = await fetch('/api/payments/razorpay/order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -151,7 +149,7 @@ export default function StudentPaymentsPage() {
         rzp.open();
         setProcessing(false);
       } else {
-        
+
         await handleExecutePayment();
       }
     } catch (err) {
@@ -166,16 +164,16 @@ export default function StudentPaymentsPage() {
 
     try {
       const isUpi = paymentMethod === 'upi';
-      const methodLabel = isUpi 
-        ? 'PhonePe UPI (8712134359@ybl)' 
-        : paymentMethod === 'card' 
-        ? 'Credit / Debit Card' 
+      const methodLabel = isUpi
+        ? 'PhonePe UPI (8712134359@ybl)'
+        : paymentMethod === 'card'
+        ? 'Credit / Debit Card'
         : 'Net Banking';
 
-      const transactionId = isUpi && upiUtr.trim() 
-        ? upiUtr.trim() 
-        : isUpi 
-        ? `UPI_8712134359_${Date.now().toString().slice(-6)}` 
+      const transactionId = isUpi && upiUtr.trim()
+        ? upiUtr.trim()
+        : isUpi
+        ? `UPI_8712134359_${Date.now().toString().slice(-6)}`
         : `pay_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
 
       const res = await fetch('/api/payments/razorpay/verify', {
@@ -244,7 +242,7 @@ export default function StudentPaymentsPage() {
       {loading ? (
         <Loader text="Loading your invoices..." />
       ) : payments.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={CreditCard}
           title="No Invoices Found"
           message="You have no recorded tuition payments or outstanding dues."
@@ -296,9 +294,9 @@ export default function StudentPaymentsPage() {
                   <td style={{ padding: '1rem', textAlign: 'right' }}>
                     <div style={{ display: 'inline-flex', gap: '0.5rem' }}>
                       {p.status === 'pending' ? (
-                        <Button 
-                          variant="primary" 
-                          size="sm" 
+                        <Button
+                          variant="primary"
+                          size="sm"
                           icon={Sparkles}
                           onClick={() => {
                             setPayingInvoice(p);
@@ -308,9 +306,9 @@ export default function StudentPaymentsPage() {
                           Pay Now
                         </Button>
                       ) : (
-                        <Button 
-                          variant="outline" 
-                          size="sm" 
+                        <Button
+                          variant="outline"
+                          size="sm"
                           icon={Eye}
                           onClick={() => setSelectedReceipt(p)}
                         >
@@ -617,8 +615,8 @@ export default function StudentPaymentsPage() {
 
                 <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '0.5rem' }}>
                   <Button variant="secondary" onClick={() => setPayingInvoice(null)}>Cancel</Button>
-                  <Button 
-                    variant="primary" 
+                  <Button
+                    variant="primary"
                     loading={processing}
                     icon={Sparkles}
                     onClick={paymentMethod === 'upi' ? handleExecutePayment : handleRazorpayLivePayment}

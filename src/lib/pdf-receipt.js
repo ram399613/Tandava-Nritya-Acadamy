@@ -1,7 +1,6 @@
 import { jsPDF } from 'jspdf';
 import { formatCurrency, formatDate } from './utils';
 
-
 export function downloadReceiptPDF(payment) {
   if (!payment) return;
 
@@ -21,12 +20,10 @@ export function downloadReceiptPDF(payment) {
     const paymentMode = payment.paymentMethod || 'Razorpay Live UPI / Card';
     const paymentDate = formatDate(payment.paidAt || payment.createdAt || new Date());
 
-    
     doc.setFillColor(15, 12, 28);
     doc.rect(0, 0, 210, 45, 'F');
 
-    
-    doc.setTextColor(245, 158, 11); 
+    doc.setTextColor(245, 158, 11);
     doc.setFontSize(22);
     doc.setFont('helvetica', 'bold');
     doc.text('TANDAVA NRITYA ACADEMY', 15, 20);
@@ -38,7 +35,6 @@ export function downloadReceiptPDF(payment) {
     doc.text('Tandava Complex, Grand Trunk (GT) Road, Phagwara, Punjab 144401 | GSTIN: 03AABCT8921C1ZR', 15, 33);
     doc.text('director@tandavanritya.academy | +91 91777-0999 | UPI: 8712134359@ybl', 15, 39);
 
-    
     doc.setFillColor(139, 92, 246);
     doc.roundedRect(145, 12, 50, 24, 3, 3, 'F');
     doc.setTextColor(255, 255, 255);
@@ -49,7 +45,6 @@ export function downloadReceiptPDF(payment) {
     doc.text(`#${receiptNum}`, 153, 26);
     doc.text(paymentDate, 153, 32);
 
-    
     doc.setTextColor(30, 41, 59);
     doc.setFontSize(11);
     doc.setFont('helvetica', 'bold');
@@ -65,15 +60,13 @@ export function downloadReceiptPDF(payment) {
     doc.text(`Student ID: ${payment.studentId || payment.student?._id || 'STD-7749'}`, 15, 72);
     doc.text(`Email: ${payment.student?.email || 'student@danceacademy.com'}`, 15, 77);
 
-    
-    doc.setFillColor(16, 185, 129); 
+    doc.setFillColor(16, 185, 129);
     doc.roundedRect(145, 58, 50, 12, 2, 2, 'F');
     doc.setTextColor(255, 255, 255);
     doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
     doc.text('STATUS: PAID & CONFIRMED', 148, 66);
 
-    
     doc.setFillColor(241, 245, 249);
     doc.rect(15, 90, 180, 10, 'F');
     doc.setTextColor(71, 85, 105);
@@ -83,7 +76,6 @@ export function downloadReceiptPDF(payment) {
     doc.text('SAC CODE', 115, 96.5);
     doc.text('AMOUNT (INR)', 160, 96.5);
 
-    
     doc.setFontSize(10);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(15, 23, 42);
@@ -97,11 +89,9 @@ export function downloadReceiptPDF(payment) {
     doc.text('999293', 115, 110);
     doc.text(`Rs. ${baseAmount.toLocaleString('en-IN')}`, 160, 110);
 
-    
     doc.setDrawColor(226, 232, 240);
     doc.line(15, 125, 195, 125);
 
-    
     const startY = 135;
     doc.setFontSize(9);
     doc.setTextColor(100, 116, 139);
@@ -127,7 +117,6 @@ export function downloadReceiptPDF(payment) {
     doc.text('Total Paid:', 120, startY + 26);
     doc.text(`Rs. ${amount.toLocaleString('en-IN')}`, 160, startY + 26);
 
-    
     doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
     doc.setTextColor(71, 85, 105);
@@ -139,7 +128,6 @@ export function downloadReceiptPDF(payment) {
     doc.text(`Settlement Timestamp: ${paymentDate}`, 15, startY + 18);
     doc.text('Authentication: HMAC SHA-256 Validated', 15, startY + 24);
 
-    
     doc.setDrawColor(139, 92, 246);
     doc.setLineWidth(0.5);
     doc.roundedRect(15, 190, 85, 30, 2, 2, 'S');
@@ -152,7 +140,6 @@ export function downloadReceiptPDF(payment) {
     doc.text('This is an electronically generated tax invoice.', 20, 204);
     doc.text('Validated with Tandava Nritya Real-Time Ledger & Atlas DB.', 20, 210);
 
-    
     doc.line(135, 215, 195, 215);
     doc.setFontSize(9);
     doc.setFont('helvetica', 'bold');
@@ -163,24 +150,21 @@ export function downloadReceiptPDF(payment) {
     doc.setTextColor(100, 116, 139);
     doc.text('Tandava Nritya Academy Registrar', 145, 225);
 
-    
     doc.setFillColor(15, 12, 28);
     doc.rect(0, 280, 210, 17, 'F');
     doc.setFontSize(8);
     doc.setTextColor(203, 213, 225);
     doc.text('Thank you for dancing with Tandava Nritya Academy! For queries, contact billing@tandavanritya.academy', 30, 290);
 
-    
     doc.save(`Tandava_Invoice_${receiptNum}.pdf`);
     return true;
   } catch (err) {
     console.error('PDF Generation Error:', err);
-    
+
     printReceiptWindow(payment);
     return false;
   }
 }
-
 
 export function printReceiptWindow(payment) {
   if (!payment) return;

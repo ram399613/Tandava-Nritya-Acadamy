@@ -28,13 +28,12 @@ export function verifyToken(token) {
 
 export async function getAuthUser(req) {
   try {
-    
+
     const cookieStore = cookies();
     const tokenFromCookie = cookieStore.get('token')?.value;
 
     let token = tokenFromCookie;
 
-    
     if (!token && req) {
       const authHeader = req.headers.get('authorization');
       if (authHeader && authHeader.startsWith('Bearer ')) {

@@ -98,7 +98,6 @@ export async function markPaymentPaid(idOrRecordId, details = {}) {
 
   let updated = null;
 
-  
   try {
     const conn = await dbConnect();
     if (conn && isDbConnected()) {
@@ -115,7 +114,6 @@ export async function markPaymentPaid(idOrRecordId, details = {}) {
     }
   } catch (_) {}
 
-  
   const idx = global._danceflowPayments.findIndex((p) => p._id === targetId || p.transactionId === targetId);
   if (idx !== -1) {
     global._danceflowPayments[idx] = {
@@ -140,7 +138,6 @@ export async function markPaymentPaid(idOrRecordId, details = {}) {
     global._danceflowPayments.unshift(updated);
   }
 
-  
   if (global.io) {
     global.io.emit('payment_updated', updated);
     global.io.emit('payment_completed', updated);

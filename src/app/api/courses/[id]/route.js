@@ -12,7 +12,7 @@ export async function GET(req, { params }) {
     } catch (_) {}
 
     if (!course) {
-      
+
       return NextResponse.json({
         success: true,
         data: {

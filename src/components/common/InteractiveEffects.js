@@ -9,7 +9,6 @@ export default function InteractiveEffects() {
   const [embers, setEmbers] = useState([]);
   const audioCtxRef = useRef(null);
 
-  
   const playGhungrooSound = () => {
     if (!soundEnabled) return;
     try {
@@ -23,12 +22,11 @@ export default function InteractiveEffects() {
       }
       if (!ctx) return;
 
-      
       const frequencies = [880, 1320, 1760, 2400, 3100];
       frequencies.forEach((freq, idx) => {
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
-        
+
         osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
         osc.frequency.setValueAtTime(freq + (Math.random() - 0.5) * 60, ctx.currentTime);
         osc.frequency.exponentialRampToValueAtTime(freq * 0.95, ctx.currentTime + 0.16);
@@ -45,7 +43,6 @@ export default function InteractiveEffects() {
     } catch (_) {}
   };
 
-  
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
@@ -77,7 +74,6 @@ export default function InteractiveEffects() {
     return () => window.removeEventListener('tandava_settings_updated', applySavedSettings);
   }, []);
 
-  
   useEffect(() => {
     const initialEmbers = Array.from({ length: 14 }).map((_, i) => ({
       id: i,
@@ -117,7 +113,6 @@ export default function InteractiveEffects() {
         });
       }
 
-      
       newSparks.push({
         id: Math.random() + Date.now(),
         x,

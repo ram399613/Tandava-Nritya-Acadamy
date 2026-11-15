@@ -1,9 +1,9 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { 
-  UserCheck, CheckCircle2, XCircle, Clock, 
-  Radio, Calendar, Award 
+import {
+  UserCheck, CheckCircle2, XCircle, Clock,
+  Radio, Calendar, Award
 } from 'lucide-react';
 import Loader from '@/components/common/Loader';
 import EmptyState from '@/components/common/EmptyState';
@@ -112,7 +112,7 @@ export default function StudentAttendancePage() {
       {loading ? (
         <Loader text="Loading your attendance history..." />
       ) : attendance.length === 0 ? (
-        <EmptyState 
+        <EmptyState
           icon={UserCheck}
           title="No Attendance History"
           message="No attendance sessions have been recorded yet."
@@ -149,15 +149,15 @@ export default function StudentAttendancePage() {
                       borderRadius: '9999px',
                       fontSize: '0.75rem',
                       fontWeight: 600,
-                      background: a.status === 'present' 
-                        ? 'rgba(16, 185, 129, 0.15)' 
-                        : a.status === 'late' 
-                          ? 'rgba(234, 179, 8, 0.15)' 
+                      background: a.status === 'present'
+                        ? 'rgba(16, 185, 129, 0.15)'
+                        : a.status === 'late'
+                          ? 'rgba(234, 179, 8, 0.15)'
                           : 'rgba(239, 68, 68, 0.15)',
-                      color: a.status === 'present' 
-                        ? '#34d399' 
-                        : a.status === 'late' 
-                          ? '#facc15' 
+                      color: a.status === 'present'
+                        ? '#34d399'
+                        : a.status === 'late'
+                          ? '#facc15'
                           : '#f87171'
                     }}>
                       {a.status === 'present' && <CheckCircle2 size={12} />}
