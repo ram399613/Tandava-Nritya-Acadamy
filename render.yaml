@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: tandava-nritya-academy
+    runtime: node
+    plan: free
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: MONGODB_URI
+        value: mongodb+srv://dance:123@cluster0.ydxnvhv.mongodb.net/dance_academy?retryWrites=true&w=majority
+      - key: JWT_SECRET
+        value: dance_academy_jwt_secret_key_2026_secure

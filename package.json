@@ -4,9 +4,9 @@
   "private": true,
   "description": "Dance Academy Management Platform - Full Stack Next.js & MongoDB",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "NODE_ENV=development node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
+    "start": "node server.js",
     "seed": "node src/lib/seed.js"
   },
   "dependencies": {
